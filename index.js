@@ -9,11 +9,12 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
-app.listen(process.env.HTTP_PORT, (err) => {
+port = process.argv[2] || process.env.HTTP_PORT;
+app.listen(port, (err) => {
     if (err) {
         return console.log('something bad happened', err)
     }
-    console.log(`server is listening on ${process.env.HTTP_PORT}`)
+    console.log(`server is listening on ${port}`)
 });
 
 app.use('/echoApi', echoApi);
